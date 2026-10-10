@@ -33,7 +33,7 @@
 | **Student ID** | [446052579] |
 | **University Email** | 446052579@std.psau.edu.sa |
 | **GitHub Username** | [LeenFahad07] |
-| **Repository Link** | [Paste your repository link here] |
+| **Repository Link** | [https://github.com/LeenFahad07/OS-Assignment1-Leen-Fahad.git] |
  
 ---
 
