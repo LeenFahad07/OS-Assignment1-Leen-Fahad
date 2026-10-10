@@ -129,69 +129,69 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
+### Entry 1 - [8 Occt 10pm]
 **What I did**:
-
+Reviewed the assignment requirements and examined the starter Java code
 **Details**:
-
+Identified the Process class, the Runnable interface, the ready queue, and the main scheduling loop
 **Challenges**:
-
+Initial confusion with GitHub fork vs clone
 **Solution**:
-
+Watched a short tutorial and understood the difference
 **Time spent**:
-
+2 hours
 ---
 
-### Entry 2 - [Date and Time]
+### Entry 2 - [9 Oct 9pm]
 **What I did**:
-
+Added priority values to the simulated processes
 **Details**:
-
+Used random priority values from 1 to 10 and included the priority in the process information displayed by the simulation
 **Challenges**:
-
+Integrating the new priority field without disrupting the existing process creation and queue logic
 **Solution**:
-
+Updated the process constructor and the code that creates and adds processes to the queue
 **Time spent**:
-
+2 hours
 ---
 
-### Entry 3 - [Date and Time]
+### Entry 3 - [10 Oct 1am]
 **What I did**:
-
+Added a counter to track process dispatches during the simulation
 **Details**:
-
+Updated the execution logic to increment the counter and displayed the total after scheduling finished
 **Challenges**:
-
+Deciding where the counter should be updated so that it represents the intended scheduling events
 **Solution**:
-
+Added the increment to the process execution method used by the scheduler
 **Time spent**:
-
+1 hour
 ---
 
-### Entry 4 - [Date and Time]
+### Entry 4 - [10 Oct 2:30am]
 **What I did**:
-
+Added waiting time tracking and a final process summary
 **Details**:
-
+Recorded when a process entered the ready queue and accumulated elapsed waiting time when it was scheduled. Displayed waiting time and calculated turnaround time for each process
 **Challenges**:
-
+Tracking queue waiting time while accounting for the fact that Java thread execution has runtime overhead
 **Solution**:
-
+Added fields and methods to record ready queue entry time and calculate the reported metrics
 **Time spent**:
-
+1:30 hour
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - [10 Oct 3:30am]
 **What I did**:
-
+ Ran the simulation and reviewed the scheduling output
 **Details**:
-
+Tested the program with a 2000 ms time quantum and 19 processes. The run I reviewed reported 39 context switch/dispatch counts and showed the final waiting time and turnaround-time summary
 **Challenges**:
-
+Understanding why random priorities and timing measurements could differ between runs
 **Solution**:
-
+Compared the outputs and identified random priority assignment and runtime timing variation as reasons for the differences
 **Time spent**:
-
+30 min
 ---
 
 ### Entry 6 - [Optional - Date and Time]
@@ -211,14 +211,14 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [3 Days]
 
 **Most challenging part**:
-
+Waiting time calculation and thread behavior
 **Most interesting learning**:
-
+Observing how a process that exceeds the time quantum returns to the ready queue and receives another turn
 **What I would do differently next time**:
-
+I would plan the testing earlier and keep a record of each change
 ---
 
 # Part B: Reflection (0.5 mark)
@@ -237,7 +237,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+This assignment taught me how to simulate multiple processes vying for CPU time using Java threads. I discovered that a thread can be started by calling start() and created by passing a Runnable object to the Thread constructor. I also discovered that the Round-Robin algorithm divides CPU time among processes using a fixed time quantum. A process may be put back in the ready queue for another turn if it doesn't finish within its time slice. I was able to comprehend the connection between thread execution, scheduling choices, and the ready queue thanks to the simulation. I also discovered that runtime overhead and thread scheduling can cause variations in measured waiting times.
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -245,7 +245,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Understanding how to combine Java threads with the Round-Robin scheduling algorithm was the most difficult aspect of this assignment. I had to comprehend how a process's remaining burst time indicates whether it has finished or needs to go back to the ready queue. It was also necessary to pay close attention to when a process entered the queue and when it finished in order to track wait times and turnaround times. Differentiating the simulated processes from the real Java threads that run their Runnable code presented another difficulty. After making adjustments, I examined the scheduling flow and verified the program's output in order to resolve these problems. This made it easier for me to comprehend how the code and the simulation's output relate to one another.
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -253,7 +253,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+By going over the current code and comprehending the function of each crucial method, I was able to overcome the difficulties. From adding a process to the ready queue to executing it for the allotted time quantum, I followed the execution flow. After that, I ran a simulation test to see if processes with burst times longer than 2000 ms were added back to the queue. In order to see the number of context switches as well as the waiting and turnaround times, I also looked at the final summary. I was able to observe that timing measurements and priority values could change between runs by running the program multiple times. I gained a better understanding of the interaction between Java threads and the scheduler by comparing the outcomes.
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -261,7 +261,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Applications that need to manage several tasks without making the entire program wait for one task to finish can benefit from multithreading. A web server, for instance, can use threads to manage work for various client requests. A desktop program that completes a task in the background while maintaining a responsive user interface is another example. By allocating a finite time quantum to each task, the Round-Robin algorithm illustrates how CPU time can be distributed among them. A task can wait for another chance to be completed if it is not completed during its turn. Developers can create applications that are responsive and efficiently utilize system resources by having a thorough understanding of thread scheduling and waiting.
 
 ### Optional: What would you like to learn more about?
 
@@ -291,7 +291,7 @@
 
 > 💡 **TIP:** Note that the class named `Process` in our code is a *simulated* process, and it is run by a real Java *thread*. Explain that distinction and point to the `new Thread(process)` line in `addProcessToQueue()`.
 
-**Your Answer:** *(3-5 sentences)*
+**Your Answer:A program that is running and has its own memory and system resources is called a process. Within a process, a thread is a smaller unit of execution that shares resources and memory. Threads can assist a program in carrying out several tasks at once and are typically less expensive to create and switch between than separate processes. The Process class in my assignment implements the Runnable interface and simulates a process. Each simulated process can run on its own Java thread while the scheduler maintains the ready queue thanks to the addProcessToQueue() method, which creates a Java thread using new Thread(process).** *(3-5 sentences)*
 
 [Write your answer here.]
 
@@ -305,15 +305,22 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+The scheduler puts a process at the end of the ready queue so that other processes can run if it does not complete within the 2000 ms time quantum. P1, for instance, has a burst time of 3725 ms. It is added back to the ready queue after running for 2000 ms during its first turn, with 1725 ms left. P1 is scheduled twice and re-queued once prior to completion since it executes once more for the final 1725 ms before finishing. Because lengthy processes cannot occupy the CPU continuously while other processes wait for their turns, this behavior promotes fairness.
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+P1 - Burst Time: 3725ms
+Executing for 2000ms
+P1 remaining burst time: 1725ms
+P1 added back to the ready queue
+
+P1 - Burst Time: 1725ms
+Executing for 1725ms
+P1 completed
 ```
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+this output shows that P1 initially requires 3725 ms of CPU time, but the time quantum is only 2000 ms. After its first execution, P1 has 1725 ms remaining because 3725 − 2000 = 1725 ms. Since P1 has not finished, the scheduler adds it to the end of the ready queue, allowing other processes to execute first. P1 then receives another turn and executes for the remaining 1725 ms until it completes. Therefore, P1 executes twice and is re-queued once before completion, demonstrating how Round-Robin scheduling promotes fairness.
 
 ## Question 3: Thread Lifecycle
 
@@ -321,7 +328,7 @@ Example from my output:
 
 > 💡 **TIP:** Follow P1 through the code: created in `addProcessToQueue()`, started in the scheduler loop, sleeping inside `run()`, and the main thread waiting on `join()`. Remember that **the main thread waits** on `join()`, while **P1's thread sleeps** in `Thread.sleep()`. Be clear about which thread is in which state.
 
-**Your Answer:** *(3-5 sentences overall; one short explanation per state)*
+**Your Answer:The lifecycle of a process thread in my simulation can be explained using P1. First, the Java thread is in the New state when it is created with new Thread(process). When start() is called, the thread becomes eligible to run and enters the Runnable state; the operating system or JVM scheduler determines when it actually executes. While P1 is executing its time slice, it is in the Running state conceptually. When the thread calls Thread.sleep(), it enters the timed waiting state temporarily, and when the scheduler thread calls join(), the calling scheduler thread waits for the joined thread to finish. After the thread's run() method completes, the thread enters the Terminated state.** *(3-5 sentences overall; one short explanation per state)*
 
 1. **New**: [When is P1 in the New state?]
 
@@ -339,34 +346,19 @@ Example from my output:
 
 > 💡 **TIP:** Relate each example back to your simulation: what plays the role of the "process", the "time quantum" and the "context switch" in that scenario?
 
-**Your Answer:** *(3-5 sentences per example)*
+**Your Answer:An operating system that divides CPU time among several interactive processes is one practical use of round-robin scheduling. Every process is given a finite amount of time; if it doesn't finish, it goes back to the ready queue so that another process can start. A server that uses threads to manage several client tasks is a second example, though actual servers may also employ other scheduling techniques. Instead of letting one lengthy task take up all of the CPU time in such a system, the scheduler can give each task a chance to run. Each turn is limited by the time quantum, and the overhead of switching between tasks is represented by context switches.** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
-
-**Description**:
-[Describe the real-world scenario.]
-
-**Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
-
-### Example 2: [Name of application/scenario]
-
-**Description**:
-[Describe the real-world scenario or application.]
-
-**Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.Concurrency and threads: Threads in the same process share memory and resources, and they enable several tasks to advance within a program.
+2.Round-Robin scheduling assigns a fixed time quantum to each process. It is put at the end of the ready queue if it doesn't finish.
+3.Thread lifecycle and synchronization: Java threads go through various states, and methods like join(), sleep(), and start() have an impact on waiting and thread execution.
 
 **Concepts I need to study more:**
-1.
-2.
+1.Thread synchronization: When multiple threads access shared data, I'd like to know more about how to avoid race situations.
+2.Algorithms for scheduling: I want to contrast Round-Robin with algorithms like Shortest Job First and Priority Scheduling, taking into account how they affect waiting times and fairness.
 
 ---
 
